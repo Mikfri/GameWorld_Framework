@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace GameWorldLib.Models.SaveFile
+namespace GameWorldLib.SaveFile
 {
     /// <summary>
     /// Hensigten med denne klasse er at kunne gemme spillets tilstand.
@@ -42,7 +42,7 @@ namespace GameWorldLib.Models.SaveFile
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load("GameWorld_SaveFile.xml");
-        }          
+        }
 
     }
 }

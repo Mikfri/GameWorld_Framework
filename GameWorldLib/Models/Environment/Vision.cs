@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameWorldLib.Models.Items
+namespace GameWorldLib.Models.Environment
 {
-    public class AttackItem
+    public class Vision
     {
-        public string Name { get; set; }
-        public int Hit { get; set; }
         public int Range { get; set; }
+        public int Angle { get; set; }
 
-        public AttackItem() { }
+        public Vision() { }
     }
 }

@@ -8,12 +8,17 @@ using GameWorldLib.Models.Characters;
 
 namespace GameWorldLib.Models.Environment
 {
+    /// <summary>
+    /// World klassen håndterer alt som har med verdenen å gøre og dens objekter.
+    /// Den har sine egne properties: X og Y, som er størrelsen på verdenen.
+    /// </summary>
     public class World
     {
         //Use camel casing ("camelCasing") when naming private or internal fields and prefix them with _
         //Use camel casing when naming local variables, including instances of a delegate type
 
-        public List<Creature> Animals;
+        public List<Creature> CreatureList;
+        public List<WorldObj> ObjectList;
 
 
         public int MaxX { get; set; }
@@ -23,49 +28,54 @@ namespace GameWorldLib.Models.Environment
 
         public World(int maxX, int maxY)
         {
-            Animals = new List<Creature>();
+            CreatureList = new List<Creature>();
             MaxX = maxX;
             MaxY = maxY;
         }
 
         public void AddAnimal(Creature animal)
         {
-            Animals.Add(animal);
+            CreatureList.Add(animal);
         }
 
         public void RemoveAnimal(Creature animal)
         {
-            Animals.Remove(animal);
+            CreatureList.Remove(animal);
         }
 
 
         public string GetSquareContent(int x, int y)
         {
             // Check if there's a Fox at this position
-            foreach (var fox in Animals)
+            foreach (var fox in CreatureList)
             {
-                if (fox is Fox && fox.X == x && fox.Y == y)
+                if (fox is Fox && fox.XCordinate == x && fox.YCordinate == y)
                 {
                     return "[F]";
                 }
             }
 
             // Check if there's a rabbit at this position
-            if (Rabbit.X == x && Rabbit.Y == y)
+            if (Rabbit.XCordinate == x && Rabbit.YCordinate == y)
             {
                 return "[R]";
             }
 
-            // Check if there's an object at this position
-            //foreach (var obj in Objects)
-            //{
-            //    if (obj.X == x && obj.Y == y)
-            //    {
-            //        return "[O]";
-            //    }
-            //}
+            if (Rabbit.XCordinate == x && Rabbit.YCordinate == y)
+            {
+                return "[R]";
+            }
 
-            // If the square is not occupied, return an empty square
+            //Check if there's an object at this position
+            foreach (var obj in ObjectList)
+            {
+                if (obj.XCordinate == x && obj.YCordinate == y)
+                {
+                    return "[O]";
+                }
+            }
+
+            //If the square is not occupied, return an empty square
 
             return "[ ]";
         }

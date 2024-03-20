@@ -21,7 +21,6 @@ namespace GameWorldLib.States
         {
             State = State.NextStateFunction(input);
             State.OutputFunction(input, this);
-
         }
     }
 }
